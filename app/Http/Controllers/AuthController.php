@@ -25,18 +25,7 @@ class AuthController extends Controller
             \Log::info('Token Issued:', ['token' => $accessToken]);
     
             return response()->json(['token' => $accessToken], 200);
-
-
-
-            
-        } 
-        
-        // if (Auth::attempt($credentials)) {
-        //     $request->session()->regenerate();
- 
-        //     return redirect()->intended('dashboard');
-        // }
-        else {
+        } else {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
     }
