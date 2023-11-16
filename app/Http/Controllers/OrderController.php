@@ -44,7 +44,9 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
 
         // Update order properties as needed
+        $order->food_ids = $request->input('food_ids', $order->food_ids);
         $order->status = $request->input('status', $order->status);
+        $order->total_price = $request->input('total_price', $order->total_price);
         $order->save();
 
         return response()->json($order);
