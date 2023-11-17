@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
-    /**
-     * Handle a login request to the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -30,11 +24,6 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * Handle a logout request from the application.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function logout()
     {
         $user = auth()->user();

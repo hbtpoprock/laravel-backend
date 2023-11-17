@@ -7,10 +7,8 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    // Create a new order
     public function create(Request $request)
     {
-        // Validate the request and create a new order
         $order = Order::create([
             'order_id' => uniqid(), // Generate a unique order ID
             'user_id' => auth()->user()->id,
@@ -22,7 +20,6 @@ class OrderController extends Controller
         return response()->json($order, 201);
     }
 
-    // Read all orders
     public function index()
     {
         $orders = Order::all();
@@ -30,7 +27,6 @@ class OrderController extends Controller
         return response()->json($orders);
     }
 
-    // Read a specific order
     public function show($id)
     {
         $order = Order::findOrFail($id);
@@ -38,12 +34,10 @@ class OrderController extends Controller
         return response()->json($order);
     }
 
-    // Update an order
     public function update(Request $request, $id)
     {
         $order = Order::findOrFail($id);
 
-        // Update order properties as needed
         $order->food_ids = $request->input('food_ids', $order->food_ids);
         $order->status = $request->input('status', $order->status);
         $order->total_price = $request->input('total_price', $order->total_price);
@@ -52,7 +46,6 @@ class OrderController extends Controller
         return response()->json($order);
     }
 
-    // Delete an order
     public function destroy($id)
     {
         $order = Order::findOrFail($id);

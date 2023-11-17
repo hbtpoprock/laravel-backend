@@ -18,10 +18,9 @@ class Order extends Model
     ];
 
     protected $casts = [
-        'food_ids' => 'json', // This ensures that the food_ids attribute is cast to JSON
+        'food_ids' => 'json',
     ];
 
-    // Define relationships if needed (for example, if you have a User model)
     public function user()
     {
         return $this->belongsTo(User::class);
